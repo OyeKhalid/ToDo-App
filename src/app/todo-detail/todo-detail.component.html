@@ -1,0 +1,8 @@
+<div class="detail-container">
+  <h2>To-Do Detail</h2>
+  <div *ngIf="todo">
+    <p><strong>Details:</strong> {{ todo.text }}</p>
+    <p><strong>Added Time:</strong> {{ todo.addedTime | date:'medium' }}</p>
+  </div>
+  <button (click)="goBack()">Back</button>
+</div>

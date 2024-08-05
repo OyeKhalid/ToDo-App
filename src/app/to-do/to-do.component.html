@@ -1,0 +1,44 @@
+<div class="todo-container">
+  <h2>To-Do List</h2>
+
+  <input
+    [(ngModel)]="newTodo"
+    placeholder="Enter a new to-do"
+    (keypress)="onKeypress($event)"
+    [ngClass]="{'input-error': isInputError}"
+  />
+  <button (click)="addTodo()">
+    {{ editIndex !== null ? 'Update' : 'Add' }}
+  </button><br>
+  <button *ngIf="editIndex !== null" (click)="cancelEdit()">Cancel</button><br>
+
+  
+  <div *ngIf="isInputError" class="error-message">Input is required</div>
+  <br>
+
+  <!-- Container for top 3 items -->
+  <ul class="todo-list">
+    <li *ngFor="let todo of todos.slice(0, 3); let i = index">
+      <div class="text">{{ todo.text }}</div>
+      <div class="buttons">
+        <button (click)="editTodo(i)">Edit</button>
+        <button (click)="deleteTodo(i)">Delete</button>
+        <button (click)="viewDetails(i)">Detail</button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Scrollable container for remaining items -->
+  <div class="scrollable-todos">
+    <ul>
+      <li *ngFor="let todo of todos.slice(3); let i = index">
+        <div class="text">{{ todo.text }}</div>
+        <div class="buttons">
+          <button (click)="editTodo(i + 3)">Edit</button>
+          <button (click)="deleteTodo(i + 3)">Delete</button>
+          <button (click)="viewDetails(i + 3)">Detail</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
