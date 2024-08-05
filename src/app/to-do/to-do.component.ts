@@ -17,7 +17,7 @@ export class ToDoComponent implements OnInit {
     this.loadTodos();
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.addTodo();
   }
 
   addTodo() {

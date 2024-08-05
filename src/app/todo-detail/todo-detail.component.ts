@@ -14,6 +14,7 @@ interface Todo {
   styleUrls: ['./todo-detail.component.css']
 })
 export class TodoDetailComponent implements OnInit {
+
   todo: Todo | null = null;
 
   constructor(private route: ActivatedRoute, private router: Router) { }
@@ -24,7 +25,7 @@ export class TodoDetailComponent implements OnInit {
     if (index !== null) {
       // Fetch todos from local storage
       const todos: Todo[] = JSON.parse(localStorage.getItem('todos') || '[]');
-      
+
       // Ensure the index is valid
       if (!isNaN(Number(index)) && todos[Number(index)]) {
         this.todo = todos[Number(index)];
@@ -32,10 +33,14 @@ export class TodoDetailComponent implements OnInit {
         this.todo = null; // Invalid index
       }
     }
-
+    
+    
+  }
+  
   goBack() {
     this.router.navigate(['/']); // Navigate back to the todo list
   }
+
 }
-  
-}
+
+
